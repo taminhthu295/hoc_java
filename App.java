@@ -1,50 +1,42 @@
 import src.example.core.Student;
 import src.example.core.BankAccount;
 
-import java.io.PrintStream;
-import java.nio.charset.StandardCharsets;
-
 public class App {
     public static void main(String[] args) {
-        // Cấu hình in tiếng Việt UTF-8 ra màn hình Console
-        try {
-            System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8));
-        } catch (Exception ignored) {}
-
-        // 1. Thông tin học sinh
-        System.out.println("=== THÔNG TIN HỌC SINH ===");
+        // 1. Thong tin hoc sinh
+        System.out.println("=== THONG TIN HOC SINH ===");
         Student s = new Student("Thanh Huu", "023456789", "Java");
         System.out.println("Name: " + s.getName());
         System.out.println("Phone: " + s.getPhone());
         System.out.println("Group: " + s.getGroup());
 
-        // 2. Kiểm thử lớp BankAccount
-        System.out.println("\n=== KIỂM THỬ LỚP BANKACCOUNT ===");
+        // 2. Kiem thu lop BankAccount
+        System.out.println("\n=== KIEM THU LOP BANKACCOUNT ===");
         
-        // Tạo tài khoản hợp lệ
+        // Tao tai khoan hop le
         BankAccount acc1 = new BankAccount("1012345678", "Nguyen Van A", 500000);
-        System.out.println("Số tài khoản: " + acc1.accountNumber);
-        System.out.println("Chủ tài khoản: " + acc1.getOwnerName());
-        System.out.println("Số dư ban đầu: " + acc1.getBalance() + " VNĐ");
+        System.out.println("So tai khoan: " + acc1.accountNumber);
+        System.out.println("Chu tai khoan: " + acc1.getOwnerName());
+        System.out.println("So du ban dau: " + acc1.getBalance() + " VND");
 
-        // Đổi tên chủ tài khoản qua Setter
+        // Doi ten chu tai khoan qua Setter
         acc1.setOwnerName("Nguyen Van B");
-        System.out.println("Tên sau khi cập nhật: " + acc1.getOwnerName());
+        System.out.println("Ten sau khi cap nhat: " + acc1.getOwnerName());
 
-        // Thử nghiệm nạp tiền
-        System.out.println("\n--- Thử nghiệm nạp tiền ---");
-        acc1.deposit(200000); // Nạp hợp lệ
-        acc1.deposit(-50000); // Nạp số âm
+        // Thu nghiem nap tien
+        System.out.println("\n--- Thu nghiem nap tien ---");
+        acc1.deposit(200000); // Nap hop le
+        acc1.deposit(-50000); // Nap so am
 
-        // Thử nghiệm rút tiền
-        System.out.println("\n--- Thử nghiệm rút tiền ---");
-        acc1.withdraw(300000);  // Rút hợp lệ
-        acc1.withdraw(1000000); // Rút quá số dư
-        acc1.withdraw(-20000);  // Rút số âm
+        // Thu nghiem rut tien
+        System.out.println("\n--- Thu nghiem rut tien ---");
+        acc1.withdraw(300000);  // Rut hop le
+        acc1.withdraw(1000000); // Rut qua so du
+        acc1.withdraw(-20000);  // Rut so am
 
-        // Thử tạo tài khoản số dư khởi tạo âm
-        System.out.println("\n--- Thử tạo tài khoản số dư âm ---");
+        // Thu tao tai khoan so du khoi tao am
+        System.out.println("\n--- Thu tao tai khoan so du am ---");
         BankAccount acc2 = new BankAccount("9988776655", "Tran Thi C", -100000);
-        System.out.println("Số dư acc2: " + acc2.getBalance() + " VNĐ");
+        System.out.println("So du acc2: " + acc2.getBalance() + " VND");
     }
 }

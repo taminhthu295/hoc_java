@@ -1,52 +1,52 @@
 package src.example.core;
 
 public class BankAccount {
-    // 1. Khai báo thuộc tính với access modifier phù hợp
-    // accountNumber: Cho phép đọc ghi ở khắp mọi nơi -> public
+    // 1. Khai bao thuoc tinh voi access modifier phu hop
+    // accountNumber: Cho phep doc ghi o khap moi noi -> public
     public String accountNumber;
 
-    // ownerName: Bên ngoài đọc và cập nhật thông qua getter/setter -> private
+    // ownerName: Ben ngoai doc va cap nhat thong qua getter/setter -> private
     private String ownerName;
 
-    // balance: Bảo mật tuyệt đối, ngăn chặn can thiệp trực tiếp từ ngoài và lớp con -> private
+    // balance: Bao mat tuyet doi, ngan chan can thiep truc tiep tu ngoai va lop con -> private
     private double balance;
 
-    // 2. Constructor khởi tạo 3 tham số
+    // 2. Constructor khoi tao 3 tham so
     public BankAccount(String accountNumber, String ownerName, double initialBalance) {
         this.accountNumber = accountNumber;
         this.ownerName = ownerName;
 
         if (initialBalance < 0) {
             this.balance = 0;
-            System.out.println("[Lỗi] Số dư ban đầu không được nhỏ hơn 0! Đã gán số dư mặc định = 0.");
+            System.out.println("[Loi] So du ban dau khong duoc nho hon 0! Da gan so du mac dinh = 0.");
         } else {
             this.balance = initialBalance;
         }
     }
 
-    // Nạp tiền
+    // Nap tien vao tai khoan
     public void deposit(double amount) {
         if (amount > 0) {
             this.balance += amount;
-            System.out.println("Nạp thành công " + amount + " VNĐ. Số dư hiện tại: " + this.balance + " VNĐ");
+            System.out.println("Nap thanh cong " + amount + " VND. So du hien tai: " + this.balance + " VND");
         } else {
-            System.out.println("[Lỗi] Số tiền nạp phải lớn hơn 0! (Số tiền nhập: " + amount + ")");
+            System.out.println("[Loi] So tien nap phai lon hon 0! (So tien nhap: " + amount + ")");
         }
     }
 
-    // Rút tiền
+    // Rut tien tu tai khoan
     public void withdraw(double amount) {
         if (amount <= 0) {
-            System.out.println("[Lỗi] Số tiền rút phải lớn hơn 0! (Số tiền nhập: " + amount + ")");
+            System.out.println("[Loi] So tien rut phai lon hon 0! (So tien nhap: " + amount + ")");
         } else if (amount > this.balance) {
-            System.out.println("[Lỗi] Số dư không đủ để rút! (Số dư hiện tại: " + this.balance + ", yêu cầu rút: " + amount + ")");
+            System.out.println("[Loi] So du khong du de rut! (So du hien tai: " + this.balance + ", yeu cau rut: " + amount + ")");
         } else {
             this.balance -= amount;
-            System.out.println("Rút thành công " + amount + " VNĐ. Số dư còn lại: " + this.balance + " VNĐ");
+            System.out.println("Rut thanh cong " + amount + " VND. So du con lai: " + this.balance + " VND");
         }
     }
 
-    // Getter và Setter theo đúng yêu cầu bảo vệ dữ liệu
+    // 3. Getter va Setter
     public String getAccountNumber() {
         return this.accountNumber;
     }
@@ -63,7 +63,7 @@ public class BankAccount {
         this.ownerName = ownerName;
     }
 
-    // balance CHỈ có getter, KHÔNG có setter trực tiếp để bảo toàn tính toàn vẹn dữ liệu
+    // balance CHI co getter, KHONG co setter truc tiep de bao ve tinh toan ven du lieu
     public double getBalance() {
         return this.balance;
     }

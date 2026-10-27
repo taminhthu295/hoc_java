@@ -1,8 +1,16 @@
 import src.example.core.Student;
 import src.example.core.BankAccount;
 
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
+
 public class App {
     public static void main(String[] args) {
+        // Cấu hình in tiếng Việt UTF-8 ra màn hình Console
+        try {
+            System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8));
+        } catch (Exception ignored) {}
+
         // 1. Thông tin học sinh
         System.out.println("=== THÔNG TIN HỌC SINH ===");
         Student s = new Student("Thanh Huu", "023456789", "Java");
